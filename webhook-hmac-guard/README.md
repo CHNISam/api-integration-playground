@@ -1,5 +1,7 @@
 # Webhook HMAC Guard
 
+![Webhook HMAC Guard interface](../docs/screenshots/webhook-hmac-guard.png)
+
 A generic Spring Boot webhook receiver with HMAC-SHA256 authentication, a five-minute replay window, idempotent business processing, key rotation, and a delivery audit ledger.
 
 ## Request contract

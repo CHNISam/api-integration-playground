@@ -1,5 +1,7 @@
 # Meta Conversions API Harness
 
+![Meta CAPI Harness interface](../docs/screenshots/meta-capi-harness.png)
+
 A Spring Boot and Vue lab that builds privacy-safe `Purchase` events, sends them to Meta Test Events when locally configured, and preserves an inspectable delivery ledger.
 
 ## What it proves

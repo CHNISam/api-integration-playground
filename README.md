@@ -8,9 +8,9 @@ Three runnable integration labs focused on the failure modes that make OAuth, we
 
 | Project | What it demonstrates | Status |
 | --- | --- | --- |
-| [OAuth Flow Demo](oauth-flow-demo/) | Authorization code flow, CSRF state validation, provider errors, durable sessions, and automatic refresh | In development |
-| [Webhook HMAC Guard](webhook-hmac-guard/) | Constant-time HMAC verification, replay windows, idempotency, and rejection audit trails | In development |
-| [Meta CAPI Harness](meta-capi-harness/) | PII normalization/hashing, event construction, deduplication IDs, and Meta Test Events delivery | In development |
+| [OAuth Flow Demo](oauth-flow-demo/) | Authorization code flow, CSRF state validation, provider errors, durable sessions, and refresh-token handling | Ready; real provider proof needs local credentials |
+| [Webhook HMAC Guard](webhook-hmac-guard/) | Constant-time HMAC verification, replay windows, idempotency, and rejection audit trails | Ready and fully testable locally |
+| [Meta CAPI Harness](meta-capi-harness/) | PII normalization/hashing, event construction, deduplication IDs, and Meta Test Events delivery | Ready; real Test Events proof needs local credentials |
 
 ## Technology
 
@@ -27,3 +27,11 @@ mvn test
 ```
 
 No real credentials belong in this repository. Copy the relevant `.env.example` to `.env` locally before testing a real provider.
+
+## Interface previews
+
+| OAuth flow | Webhook guard | Meta CAPI |
+| --- | --- | --- |
+| [![OAuth Flow Lab](docs/screenshots/oauth-flow-lab.png)](oauth-flow-demo/) | [![Webhook HMAC Guard](docs/screenshots/webhook-hmac-guard.png)](webhook-hmac-guard/) | [![Meta CAPI Harness](docs/screenshots/meta-capi-harness.png)](meta-capi-harness/) |
+
+These screenshots prove the local interfaces render; they are not presented as evidence that GitHub or Meta accepted an external request. Provider evidence must be captured with the operator's own local credentials.

@@ -1,5 +1,7 @@
 # OAuth Flow Demo
 
+![OAuth Flow Lab interface](../docs/screenshots/oauth-flow-lab.png)
+
 A forensic OAuth 2.0 Authorization Code Flow lab: real GitHub sign-in, single-use `state` validation, provider-error handling, a durable HttpOnly session, and a controlled refresh-token experiment.
 
 ## Why this exists
