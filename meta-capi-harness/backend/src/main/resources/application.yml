@@ -1,0 +1,18 @@
+server:
+  port: ${SERVER_PORT:8083}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3309/meta_capi?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${DB_USER:capi}
+    password: ${DB_PASSWORD:capi_local_only}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:5175}
+  meta:
+    api-version: ${META_API_VERSION:v23.0}
+    pixel-id: ${META_PIXEL_ID:}
+    access-token: ${META_ACCESS_TOKEN:}
+    test-event-code: ${META_TEST_EVENT_CODE:}

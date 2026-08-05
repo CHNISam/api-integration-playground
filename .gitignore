@@ -1,0 +1,36 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Java
+**/target/
+*.class
+*.jar
+*.war
+
+# Node
+**/node_modules/
+**/dist/
+**/coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# IDE and OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Runtime data and logs
+*.log
+data/
+mysql-data/
+
+# Test and tool output
+.codex-log/
+playwright-report/
+test-results/

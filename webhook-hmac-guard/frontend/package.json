@@ -1,0 +1,1 @@
+{"name":"webhook-hmac-guard-ui","private":true,"version":"1.0.0","type":"module","scripts":{"dev":"vite --port 5174","build":"vue-tsc --noEmit && vite build","preview":"vite preview --port 5174"},"dependencies":{"vue":"3.5.40"},"devDependencies":{"@vitejs/plugin-vue":"6.0.8","typescript":"5.9.3","vite":"8.2.0","vue-tsc":"3.2.5"}}

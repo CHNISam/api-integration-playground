@@ -1,0 +1,1 @@
+<template><main><p class="eyebrow">LAB 01 / OAUTH</p><h1>Authorization flow under inspection.</h1><p>Provider handshakes, state validation, and token refresh traces will appear here.</p></main></template>

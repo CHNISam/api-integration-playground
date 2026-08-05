@@ -1,0 +1,17 @@
+server:
+  port: ${SERVER_PORT:8082}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3308/webhook_guard?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${DB_USER:webhook}
+    password: ${DB_PASSWORD:webhook_local_only}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:5174}
+  webhook:
+    active-secret: ${WEBHOOK_SECRET:replace-with-a-long-local-secret}
+    previous-secret: ${WEBHOOK_PREVIOUS_SECRET:}
+    tolerance: ${WEBHOOK_TOLERANCE:PT5M}

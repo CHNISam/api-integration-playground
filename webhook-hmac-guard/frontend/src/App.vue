@@ -1,0 +1,1 @@
+<template><main><p class="eyebrow">LAB 02 / WEBHOOKS</p><h1>Every delivery leaves evidence.</h1><p>Inspect signature decisions, replay windows, duplicates, and rejected requests.</p></main></template>
