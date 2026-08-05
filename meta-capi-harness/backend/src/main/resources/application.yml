@@ -12,7 +12,7 @@ spring:
 app:
   frontend-url: ${FRONTEND_URL:http://localhost:5175}
   meta:
-    api-version: ${META_API_VERSION:v23.0}
+    api-version: ${META_API_VERSION:v25.0}
     pixel-id: ${META_PIXEL_ID:}
     access-token: ${META_ACCESS_TOKEN:}
     test-event-code: ${META_TEST_EVENT_CODE:}

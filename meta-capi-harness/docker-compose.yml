@@ -1,0 +1,35 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: meta_capi
+      MYSQL_USER: ${DB_USER:-capi}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-capi_local_only}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_local_only}
+    ports: ["3309:3306"]
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-p${DB_ROOT_PASSWORD:-root_local_only}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes: ["capi-mysql:/var/lib/mysql"]
+  backend:
+    build: ./backend
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/meta_capi?allowPublicKeyRetrieval=true&useSSL=false
+      DB_USER: ${DB_USER:-capi}
+      DB_PASSWORD: ${DB_PASSWORD:-capi_local_only}
+      META_API_VERSION: ${META_API_VERSION:-v25.0}
+      META_PIXEL_ID: ${META_PIXEL_ID:-}
+      META_ACCESS_TOKEN: ${META_ACCESS_TOKEN:-}
+      META_TEST_EVENT_CODE: ${META_TEST_EVENT_CODE:-}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5175}
+    ports: ["8083:8083"]
+    depends_on:
+      mysql: {condition: service_healthy}
+  frontend:
+    build: ./frontend
+    ports: ["5175:5175"]
+    depends_on: [backend]
+volumes:
+  capi-mysql:
