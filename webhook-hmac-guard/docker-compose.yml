@@ -1,0 +1,35 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: webhook_guard
+      MYSQL_USER: ${DB_USER:-webhook}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-webhook_local_only}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_local_only}
+    ports: ["3308:3306"]
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-p${DB_ROOT_PASSWORD:-root_local_only}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes: ["webhook-mysql:/var/lib/mysql"]
+  backend:
+    build: ./backend
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/webhook_guard?allowPublicKeyRetrieval=true&useSSL=false
+      DB_USER: ${DB_USER:-webhook}
+      DB_PASSWORD: ${DB_PASSWORD:-webhook_local_only}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET:-replace-with-a-long-random-local-secret}
+      WEBHOOK_PREVIOUS_SECRET: ${WEBHOOK_PREVIOUS_SECRET:-}
+      WEBHOOK_TOLERANCE: ${WEBHOOK_TOLERANCE:-PT5M}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5174}
+    ports: ["8082:8082"]
+    depends_on:
+      mysql: {condition: service_healthy}
+  frontend:
+    build: ./frontend
+    environment: {VITE_API_PROXY: http://backend:8082}
+    ports: ["5174:5174"]
+    depends_on: [backend]
+volumes:
+  webhook-mysql:
