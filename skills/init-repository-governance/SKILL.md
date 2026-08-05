@@ -10,24 +10,27 @@ Create evidence-based repository instructions. Treat Codex `/init` as an optiona
 ## Workflow
 
 1. Read every applicable `AGENTS.md`, `AGENTS.override.md`, and configured fallback instruction file before changing anything. Also inspect `CLAUDE.md` when present as a migration source, not as automatically active Codex guidance.
-2. Run `python <skill-dir>/scripts/inventory_repository.py --root <repo-root>` to collect a read-only inventory. If Python is unavailable, inspect the same facts manually.
-3. Read the detected manifests, primary README, contribution guide, CI configuration, test configuration, release documentation, and existing instruction files. Prefer repository evidence over assumptions.
-4. Read [references/reusable-governance.md](references/reusable-governance.md). Select only rules relevant to this repository.
-5. Decide the instruction layout:
+2. Before designing Git policy or performing any branch, commit, push, pull, merge, rebase, PR, tag, release, CI/CD, or Git-hook operation, completely read and follow the installed `git-workflow` skill. If it is unavailable, stop before Git mutations and record that the required workflow could not be loaded.
+3. Run `python <skill-dir>/scripts/inventory_repository.py --root <repo-root>` to collect a read-only inventory. If Python is unavailable, inspect the same facts manually.
+4. Read the detected manifests, primary README, contribution guide, CI configuration, test configuration, release documentation, and existing instruction files. Prefer repository evidence over assumptions.
+5. Read [references/reusable-governance.md](references/reusable-governance.md). Select only rules relevant to this repository.
+6. Decide the instruction layout:
    - Put repository-wide commands, invariants, safety rules, and completion criteria in the root `AGENTS.md`.
    - Put service-, package-, or language-specific rules in the closest nested `AGENTS.md`.
    - Use `AGENTS.override.md` only for an intentional temporary replacement.
    - Keep detailed policies in checked-in docs and link them from `AGENTS.md`.
-6. Start from [assets/AGENTS.template.md](assets/AGENTS.template.md) when creating a file. When updating a file, preserve accurate project-specific rules and merge deliberately instead of overwriting it wholesale.
-7. Remove every placeholder and irrelevant section. Replace example commands with commands verified from manifests, task runners, CI, or documentation.
-8. Ask before selecting a policy that repository evidence cannot establish and that materially affects contributors, including branch strategy, production release gates, accepted business behavior, security boundaries, migrations, or new tooling. Continue independent read-only discovery while awaiting the answer.
-9. Validate with `python <skill-dir>/scripts/validate_agents.py <path-to-AGENTS.md>`. Resolve errors; treat warnings as prompts for human judgment.
-10. Report created or updated files, preserved local rules, verified commands, unresolved choices, and validation performed.
+7. Start from [assets/AGENTS.template.md](assets/AGENTS.template.md) when creating a file. When updating a file, preserve accurate project-specific rules and merge deliberately instead of overwriting it wholesale.
+8. Remove every placeholder and irrelevant section. Replace example commands with commands verified from manifests, task runners, CI, or documentation.
+9. Use controlled GitFlow as the user's preferred default only when the repository has no contrary documented branch model: `feature/*` to `develop`, `release/*` from `develop` to `main`, and `hotfix/*` from `main` back to both long-lived branches. Keep `main` releasable and prohibit direct development there. Ask before changing an established model or repairing a repository whose current branches contradict the policy.
+10. Ask before selecting any other policy that repository evidence cannot establish and that materially affects contributors, including production release gates, accepted business behavior, security boundaries, migrations, or new tooling. Continue independent read-only discovery while awaiting the answer.
+11. Validate with `python <skill-dir>/scripts/validate_agents.py <path-to-AGENTS.md>`. Resolve errors; treat warnings as prompts for human judgment.
+12. Report created or updated files, preserved local rules, verified commands, unresolved choices, and validation performed.
 
 ## Required Judgments
 
 - Never copy repository names, absolute paths, deployment vendors, feature flags, reference projects, or product boundaries from the source template unless they apply to the target repository.
 - Never mandate a named skill, tool, package manager, branch model, hosting platform, or test command unless it is installed, available, or explicitly chosen.
+- Do not silently replace controlled GitFlow with trunk-based development merely because a repository is small or has one contributor.
 - Prefer concise operational rules over philosophy. Keep the combined instruction chain comfortably below Codex's configured project-document byte limit; use nested files and linked docs when necessary.
 - Encode repeatable human judgment in `AGENTS.md`; enforce mechanical formatting and static checks with linters, hooks, or CI instead of prose alone.
 - Preserve uncommitted user changes. Do not use repository initialization as permission to commit, push, install dependencies, modify global configuration, or alter production systems.

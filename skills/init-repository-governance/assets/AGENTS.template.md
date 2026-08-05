@@ -34,7 +34,10 @@ Do not weaken, skip, or delete tests merely to make a run pass. Ask before chang
 
 ## Git and release safety
 
-- Follow `<documented branch strategy>` and use `<commit convention>`.
+- Completely read and follow the installed `git-workflow` skill before any Git-policy decision or Git mutation.
+- Unless established repository policy says otherwise, use controlled GitFlow: `feature/*` → `develop`, validated `release/*` → `main`, and `hotfix/*` → both `main` and `develop`.
+- Keep `main` releasable; do not develop, commit, or push directly on it.
+- Use Conventional Commits: `<type>[scope]: <description>`.
 - Inspect branch, status, tracking relationship, remote, and exact targets before Git mutations.
 - Do not rewrite history, overwrite files, delete branches/tags, or discard changes without explicit authorization.
 - Keep `<production branch>` releasable. Follow `<release/staging/approval documentation>` for deployments and releases.

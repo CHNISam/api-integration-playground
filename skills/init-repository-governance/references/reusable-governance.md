@@ -26,21 +26,23 @@ Use this catalog selectively. Repository evidence and explicit user instructions
 
 Always suitable:
 
+- Before any Git mutation or Git-policy decision, completely read and follow the installed `git-workflow` skill. If it is unavailable, stop before mutations rather than reconstructing it from memory.
 - Inspect current branch, status, tracking relationship, remote, and exact targets before Git mutations.
 - Preserve unrelated and uncommitted user changes; work around them.
 - Obtain explicit authorization before destructive or history-rewriting operations.
 - Verify important Git claims with fresh command output.
 - Prefer non-interactive commands and the repository's established remote protocol.
 
-Recommended defaults when the repository has no contrary convention:
+User-preferred defaults when the repository has no contrary convention:
 
 - Use Conventional Commits: `<type>[scope]: <description>`.
-- Keep the production branch releasable; do feature work on a non-production branch.
+- Use controlled GitFlow: `feature/*` branches start from and return to `develop`; `release/*` promotes validated work from `develop` to `main`; `hotfix/*` starts from `main` and returns to both long-lived branches.
+- Keep `main` releasable. Do not develop, commit, or push directly on it.
 - Prefer HTTPS remotes unless the user or environment requires SSH.
 
 Choose rather than assume:
 
-- GitHub Flow, GitFlow, trunk-based development, or another branch model.
+- A different branch model when repository evidence conflicts with controlled GitFlow.
 - Whether pull requests are mandatory for solo work.
 - Tag, release-candidate, staging, approval, and production deployment gates.
 - Versioning and release artifact policies.

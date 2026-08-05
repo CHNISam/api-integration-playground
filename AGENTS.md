@@ -47,10 +47,17 @@ Never weaken, skip, or delete a test just to make a run pass. Obtain confirmatio
 
 ## Git workflow
 
-- Use trunk-based solo development on `main` with small, natural Conventional Commits.
+- Before any branch, commit, push, pull, merge, rebase, PR, tag, release, CI/CD, or Git-hook operation, completely read and follow the installed `git-workflow` skill.
+- Use controlled GitFlow:
+  - `main` contains only releasable, traceable versions. Do not develop, commit, or push directly on `main`.
+  - Create `feature/*` from `develop`; after relevant and full checks pass, merge it into `develop`. A PR is optional for solo work and required when review or collaboration is requested.
+  - Create `release/*` from `develop`; merge to `main` only after release validation and explicit user approval, then merge the release result back to `develop`.
+  - Create `hotfix/*` from `main`; after validation, merge it into both `main` and `develop` with explicit release approval.
+- Use small, natural Conventional Commits: `<type>[scope]: <description>`.
 - Preserve unrelated and uncommitted changes.
 - Inspect status, branch, remote, and exact targets before Git mutations.
-- Do not rewrite history, discard work, delete refs, push, tag, or release without the authorization implied by the current user request.
+- Do not rewrite shared history. Do not discard work, delete refs, force-push, tag, release, or deploy without explicit authorization.
+- Verify branch, tracking relationship, working tree, and remote results with fresh output before claiming a Git operation completed.
 - Keep commits organized by meaningful delivery stages: scaffold, core flows, tests/hardening, and documentation/evidence.
 
 ## UI and documentation
