@@ -59,6 +59,8 @@ Use an “Integration Forensics Lab” visual language: dark technical workbench
 
 Each project README must include purpose, architecture or sequence Mermaid diagram, setup, verified curl or UI walkthrough, common failure modes in “symptom → cause → fix” form, test commands, credential boundaries, and honest evidence status. Screenshots belong in `docs/screenshots/` and must come from a running build; do not fabricate provider dashboards or successful external events.
 
+Reuse an installed browser or the Codex Chrome connector before downloading browser binaries or drivers; any download requires explicit user authorization. Before saving localhost screenshots, verify the exact URL, port owner, page title, and a distinctive DOM marker. An HTTP 200 response alone is insufficient because development servers may move to another port when the requested port is occupied.
+
 ## Completion criteria
 
 - All three applications build independently and their core tests pass.

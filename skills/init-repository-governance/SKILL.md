@@ -31,6 +31,8 @@ Create evidence-based repository instructions. Treat Codex `/init` as an optiona
 - Prefer concise operational rules over philosophy. Keep the combined instruction chain comfortably below Codex's configured project-document byte limit; use nested files and linked docs when necessary.
 - Encode repeatable human judgment in `AGENTS.md`; enforce mechanical formatting and static checks with linters, hooks, or CI instead of prose alone.
 - Preserve uncommitted user changes. Do not use repository initialization as permission to commit, push, install dependencies, modify global configuration, or alter production systems.
+- Before downloading a browser, browser driver, Playwright runtime, or similar large tool, check existing system browsers, non-default/portable install paths, and available IDE browser connectors. A missing executable at one default path is inconclusive. Prefer an existing browser and obtain explicit user authorization before any download or installation.
+- Before accepting local UI evidence, verify the exact URL, port owner, and page title or a distinctive DOM marker. An HTTP 200 response alone does not prove the intended application is serving the port.
 
 ## Codex Integration
 

@@ -12,6 +12,7 @@ Use this catalog selectively. Repository evidence and explicit user instructions
 - UI and prototype fidelity
 - External references and licenses
 - Completion and reporting
+- Tool and browser reuse
 
 ## Repository scope and ownership
 
@@ -105,3 +106,11 @@ Include these rules only when the repository contains UI or supplied prototypes:
 - Run focused verification first, then broader checks when justified and feasible.
 - Report modified files, behavior changes, tests/checks run, failures or omissions, and remaining risks.
 - Do not claim tests, deployments, pushes, releases, or visual parity that were not directly verified.
+
+## Tool and browser reuse
+
+- Detect installed tools by executable availability and verified application state. Treat configuration, cache, or compatibility directories only as supporting evidence, not proof that an application is installed.
+- Before downloading Chrome, Chromium, a browser driver, Playwright browser binaries, or another large runtime, inspect existing browser executables including non-default and portable paths, then check available Codex/IDE browser connectors.
+- Prefer the user's existing browser and profile when it can safely perform the task. Never infer permission to install software from a request to test or screenshot a page.
+- Obtain explicit authorization immediately before any browser or driver download.
+- For localhost testing, confirm the exact URL, port owner, page title, and a distinctive DOM marker before capturing evidence. Development servers may auto-select another port when the requested port is occupied.

@@ -59,3 +59,9 @@ Do not weaken, skip, or delete tests merely to make a run pass. Ask before chang
 - `<path>/AGENTS.md`: `<scope and reason>`
 
 Create nested guidance only when a subtree needs genuinely different commands or rules. Keep mechanical formatting checks in tooling or CI and keep this file concise.
+
+## Tool and browser reuse
+
+- Reuse installed tools and browser connectors before proposing downloads. A missing default executable path is not proof that the application is absent.
+- Obtain explicit authorization before downloading browsers, drivers, or large runtime dependencies.
+- For local UI evidence, verify the exact URL, port ownership, page title, and a distinctive page marker before saving screenshots.
