@@ -5,6 +5,8 @@ import java.net.URI;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class OAuthController {
+    private static final Logger LOG = LoggerFactory.getLogger(OAuthController.class);
     private static final String USER_ID = "authenticated-user-id";
     private static final String DEMO_TOKEN = "refresh-lab-token";
     private final OAuthStateService stateService;
@@ -63,6 +66,8 @@ public class OAuthController {
             session.setAttribute(USER_ID, users.save(user).getId());
             return redirect("/?oauth=success");
         } catch (RuntimeException failure) {
+            LOG.warn("GitHub OAuth provider call failed: {}: {}",
+                    failure.getClass().getSimpleName(), failure.getMessage());
             return redirect("/?oauth=provider_error");
         }
     }

@@ -94,4 +94,9 @@ Current focused coverage includes valid state, tampered/missing state, expired s
 
 - Local backend unit tests: automated.
 - Vue production build: automated.
-- Real GitHub authorization and redirect-mismatch screenshot: requires a local OAuth App credential and is intentionally not fabricated or committed.
+- Real GitHub authorization: verified on 2026-08-05 with an operator-owned OAuth App; the credential remains only in the ignored local `.env`.
+- Redirect mismatch: verified against GitHub by requesting an unregistered callback path without changing the registered application callback.
+
+| Successful authorization | Provider rejection |
+| --- | --- |
+| [![Authenticated GitHub OAuth session](../docs/screenshots/oauth-real-login.png)](../docs/screenshots/oauth-real-login.png) | [![GitHub invalid redirect URI](../docs/screenshots/oauth-redirect-uri-error.png)](../docs/screenshots/oauth-redirect-uri-error.png) |

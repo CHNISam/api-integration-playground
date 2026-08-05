@@ -82,3 +82,9 @@ mvn test
 ```
 
 The tests cover deterministic PII normalization/hashing, required Purchase fields, the no-credentials safety path, external gateway use, and stable IDs across resends. A real Meta acceptance screenshot requires credentials and must come from a genuine Test Events response.
+
+## Evidence status
+
+- Local event construction, hashing, credential-gating, gateway, and resend behavior: covered by automated tests.
+- Vue production build: automated.
+- Real Meta Test Events acceptance: not verified as of 2026-08-05 because no authenticated Meta Events Manager dataset, pixel token, and test event code were available. No dashboard or success response has been fabricated.

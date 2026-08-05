@@ -8,7 +8,7 @@ Three runnable integration labs focused on the failure modes that make OAuth, we
 
 | Project | What it demonstrates | Status |
 | --- | --- | --- |
-| [OAuth Flow Demo](oauth-flow-demo/) | Authorization code flow, CSRF state validation, provider errors, durable sessions, and refresh-token handling | Ready; real provider proof needs local credentials |
+| [OAuth Flow Demo](oauth-flow-demo/) | Authorization code flow, CSRF state validation, provider errors, durable sessions, and refresh-token handling | Ready; real GitHub flow verified 2026-08-05 |
 | [Webhook HMAC Guard](webhook-hmac-guard/) | Constant-time HMAC verification, replay windows, idempotency, and rejection audit trails | Ready and fully testable locally |
 | [Meta CAPI Harness](meta-capi-harness/) | PII normalization/hashing, event construction, deduplication IDs, and Meta Test Events delivery | Ready; real Test Events proof needs local credentials |
 
@@ -35,3 +35,11 @@ No real credentials belong in this repository. Copy the relevant `.env.example` 
 | [![OAuth Flow Lab](docs/screenshots/oauth-flow-lab.png)](oauth-flow-demo/) | [![Webhook HMAC Guard](docs/screenshots/webhook-hmac-guard.png)](webhook-hmac-guard/) | [![Meta CAPI Harness](docs/screenshots/meta-capi-harness.png)](meta-capi-harness/) |
 
 These screenshots prove the local interfaces render; they are not presented as evidence that GitHub or Meta accepted an external request. Provider evidence must be captured with the operator's own local credentials.
+
+## Provider evidence
+
+| GitHub OAuth success | GitHub redirect mismatch |
+| --- | --- |
+| [![Authenticated GitHub OAuth session](docs/screenshots/oauth-real-login.png)](docs/screenshots/oauth-real-login.png) | [![GitHub invalid redirect URI](docs/screenshots/oauth-redirect-uri-error.png)](docs/screenshots/oauth-redirect-uri-error.png) |
+
+The GitHub screenshots were captured from a real authorization attempt on 2026-08-05 using local, ignored credentials. Meta Test Events remains credential-dependent and has not been represented as externally verified.
